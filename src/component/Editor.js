@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MarkdownViewer from './MarkdownViewer'
 import PropTypes from 'prop-types'
+import MarkdownEditor from "./MarkdownEditor";
 
 export default class Editor extends Component
 {
@@ -8,26 +9,20 @@ export default class Editor extends Component
         title:PropTypes.string,
         content:PropTypes.string,
         onEditTitle:PropTypes.func.isRequired,
-        onEditContent:PropTypes.func.isRequired
+        onEditContent:PropTypes.func.isRequired,
+        buttonController:PropTypes.array.isRequired
     }
 
     render()
     {
         return(
             <div className='editor_wrapper'>
-                <div className='edit_area'>
-                    <div className='title_wrapper'>
-                        <label>标题：</label>
-                        <input
-                            className='title'
-                            value={this.props.title}
-                            onChange={this.props.onEditTitle}/>
-                    </div>
-                    <textarea
-                        className="content"
-                        value={this.props.content}
-                        onChange={this.props.onEditContent}/>
-                </div>
+                <MarkdownEditor
+                    title={this.props.title}
+                    content={this.props.content}
+                    onEditTitle={this.props.onEditTitle}
+                    onEditContent={this.props.onEditContent}
+                    buttonController={this.props.buttonController}/>
                 <div className='markdownProcessed_area'>
                     <MarkdownViewer  title={this.props.title} rawContent={this.props.content}/>
                 </div>

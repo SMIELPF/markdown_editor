@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import marked from 'marked'
-import '../css/markdown.css'
+import '../css/markdownViewer.css'
 import PropTypes from 'prop-types'
 
 export default class MarkdownViewer extends Component
@@ -17,7 +17,7 @@ export default class MarkdownViewer extends Component
                 className='markdownViewer'
                 dangerouslySetInnerHTML={{__html:marked(article,
                                                         {breaks:true,
-                                                        sanitize:false}) }}>
+                                                         sanitize:false}) }}>
             </div>
 
         )
