@@ -12,7 +12,6 @@ export default class EditorContainer extends Component
         this.state={
                 title:"",
                 content:"",
-                scrollTop:0
             }
     }
 

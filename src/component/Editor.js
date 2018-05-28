@@ -15,21 +15,21 @@ export default class Editor extends Component
 
     render()
     {
+        console.log("Editor render");
         return(
             <div className='editor_wrapper'>
-                <MarkdownEditor
-                    title={this.props.title}
-                    content={this.props.content}
-                    onEditTitle={this.props.onEditTitle}
-                    onEditContent={this.props.onEditContent}
-                    buttonController={this.props.buttonController}/>
-                <div className='markdownProcessed_area'>
-                    <MarkdownViewer  title={this.props.title} rawContent={this.props.content}/>
+                <div className='editor_area'>
+                    <MarkdownEditor
+                        title={this.props.title}
+                        content={this.props.content}
+                        onEditTitle={this.props.onEditTitle}
+                        onEditContent={this.props.onEditContent}
+                        buttonController={this.props.buttonController}/>
+                </div>
+                <div className='viewer_area' ref={(viewer)=>{this.viewer=viewer}}>
+                    <MarkdownViewer title={this.props.title} rawContent={this.props.content}/>
                 </div>
             </div>
         )
     }
-
-
-
 }

@@ -15,33 +15,21 @@ export default class MarkdownEditor extends Component
         content:PropTypes.string,
         onEditTitle:PropTypes.func.isRequired,
         onEditContent:PropTypes.func.isRequired,
-        buttonController:PropTypes.array.isRequired
+        buttonController:PropTypes.array.isRequired,
     }
-
-    /*shouldComponentUpdate(nextProps,nextState)
-    {
-        this.textarea.scrollTop = this.context.getScrollTop();
-        return true;
-    }*/
 
     render()
     {
         return(
-            <div className='markdownEditor_area'>
+            <div className='markdownEditor'>
                 <div className='title_wrapper'>
                     <label>标题：</label>
-                    <input
-                        className='title'
-                        value={this.props.title}
-                        onChange={this.props.onEditTitle}/>
+                    <input className='title' value={this.props.title} onChange={this.props.onEditTitle}/>
                 </div>
                 <ButtonGroup buttonController={this.props.buttonController}/>
-                <textarea
-                    //ref={(textarea)=>{this.textarea = textarea}}
-                    className="content"
-                    value={this.props.content}
-                    onChange={this.props.onEditContent}
-                    /*onScroll={this.handleOnScroll.bind(this)}*//>
+                <textarea className="content" ref={(textarea)=>{this.textarea = textarea}}
+                          value={this.props.content}
+                          onChange={this.props.onEditContent}/>
             </div>
         )
     }
