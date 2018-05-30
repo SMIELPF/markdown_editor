@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Editor from '../component/Editor'
 import Header from '../component/Header'
 import markdown from '../img/markdown.svg'
+import '../css/Editor.css'
 
 export default class EditorContainer extends Component
 {
@@ -11,8 +12,7 @@ export default class EditorContainer extends Component
         super()
         this.state={
                 title:"",
-                content:"",
-            }
+                content:""}
     }
 
     componentWillMount()
@@ -26,9 +26,11 @@ export default class EditorContainer extends Component
         this.setState({title:event.target.value});
     }
 
-    handleOnEditContent(event)
+    handleOnEditContent(event,scrollFunc)
     {
+        console.log('onEditContent');
         this.setState({content:event.target.value});
+        scrollFunc();
     }
 
 

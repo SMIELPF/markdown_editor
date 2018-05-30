@@ -1,8 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './css/Editor.css';
-import registerServiceWorker from './registerServiceWorker';
-import EditorContainer from "./container/EditorContainer";
+import ReactDOM from 'react-dom'
+import React from 'react'
+import Editor from './container/EditorContainer'
+import registerServiceWorker from "./registerServiceWorker";
 
-ReactDOM.render(<EditorContainer />, document.getElementById('root'));
+ReactDOM.render(
+        <Editor/>,
+        document.getElementById('root'));
 registerServiceWorker();

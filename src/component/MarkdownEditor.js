@@ -16,6 +16,29 @@ export default class MarkdownEditor extends Component
         onEditTitle:PropTypes.func.isRequired,
         onEditContent:PropTypes.func.isRequired,
         buttonController:PropTypes.array.isRequired,
+        editorOnScroll:PropTypes.func
+    }
+
+    componentDidMount()
+    {
+        this.editorClientHeight = this.textarea.clientHeight;
+    }
+
+    componentDidUpdate()
+    {
+        this.editorScrollHeight = this.textarea.scrollHeight;
+    }
+
+    handleTextareaOnScroll()
+    {
+        let editorHeight = this.editorClientHeight+this.textarea.scrollTop;
+        if(this.props.editorOnScroll)
+            this.props.editorOnScroll(editorHeight,this.editorScrollHeight);
+    }
+
+    handleOnEditContent(event)
+    {
+        this.props.onEditContent(event,this.handleTextareaOnScroll.bind(this));
     }
 
     render()
@@ -29,7 +52,8 @@ export default class MarkdownEditor extends Component
                 <ButtonGroup buttonController={this.props.buttonController}/>
                 <textarea className="content" ref={(textarea)=>{this.textarea = textarea}}
                           value={this.props.content}
-                          onChange={this.props.onEditContent}/>
+                          onChange={this.handleOnEditContent.bind(this)}
+                          onScroll={this.handleTextareaOnScroll.bind(this)}/>
             </div>
         )
     }
